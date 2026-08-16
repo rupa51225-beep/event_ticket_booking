@@ -1,0 +1,1 @@
+export const SEAT_LOCK_QUEUE = 'seat-lock-queue';
