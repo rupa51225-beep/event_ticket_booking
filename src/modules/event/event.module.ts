@@ -3,11 +3,11 @@ import { EventsService } from './event.service';
 import { EventsController } from './event.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from './entities/event.entity';
-import { SeatModule } from '../seat/seat.module';
+import { SeatsModule } from '../seat/seat.module';
 // import { Seat } from '../seat/entities/seat.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Event]), SeatModule],
+  imports: [TypeOrmModule.forFeature([Event]), SeatsModule],
   controllers: [EventsController],
   providers: [EventsService],
 })

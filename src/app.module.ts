@@ -7,7 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './modules/users/users.module';
 import { BookingsModule } from './modules/booking/booking.module';
-import { SeatModule } from './modules/seat/seat.module';
+import { SeatsModule } from './modules/seat/seat.module';
 import { EventModule } from './modules/event/event.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Seat } from './modules/seat/entities/seat.entity';
@@ -21,7 +21,7 @@ import { RedisModule } from './modules/redis/redis.module';
     ConfigModule.forRoot({ isGlobal: true }),
 
 
-    DatabaseModule, UsersModule, BookingsModule, SeatModule, EventModule, TypeOrmModule.forFeature([Seat, Event, User]), AuthModule, QueuesModule, RedisModule],
+    DatabaseModule, UsersModule, BookingsModule, SeatsModule, EventModule, TypeOrmModule.forFeature([Seat, Event, User]), AuthModule, QueuesModule, RedisModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { EventsService } from './event.service';
-import { SeatService } from '../seat/seat.service';
+
 
 @Controller('events')
 export class EventsController {
@@ -19,10 +19,10 @@ export class EventsController {
     return this.eventsService.findOne(id);
   }
 
-  // @Get(':id/seats')
-  // async getEventSeats(@Param('id') eventId: string) {
-  //   // Ensure event exists
-  //   await this.eventsService.findOne(eventId);
-  //   // return this.seatsService.findByEvent(eventId);
-  // }
+  @Get(':id/seats')
+  async getEventSeats(@Param('id') eventId: string) {
+    // Ensure event exists
+    await this.eventsService.findOne(eventId);
+    // return this.seatsService.findByEvent(eventId);
+  }
 }

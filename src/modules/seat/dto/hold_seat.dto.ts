@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsUUID } from "class-validator";
 
-export class CreateSeatDto {
+export class HoldSeatDto {
     @IsUUID()
     @IsNotEmpty()
     userId: string
