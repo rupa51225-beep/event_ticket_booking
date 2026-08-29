@@ -26,7 +26,7 @@ export class Seat {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ type: 'uuid' })
     eventId: string;
 
     @Column()

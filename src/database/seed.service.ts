@@ -25,13 +25,16 @@ export class SeedService implements OnApplicationBootstrap {
 
   private async seedData() {
     const eventCount = await this.eventRepository.count();
-    if (eventCount >= 20) {
-      this.logger.log('Database already has 20 events. Skipping seeding.');
+    const sampleEvent = await this.eventRepository.findOne({ where: {} });
+    const isUuid = sampleEvent ? /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(sampleEvent.id)) : true;
+
+    if (eventCount >= 20 && isUuid) {
+      this.logger.log('Database already has 20 events with UUIDs. Skipping seeding.');
       return;
     }
 
     if (eventCount > 0) {
-      this.logger.log('Resetting old seeded data to seed 20 fresh events...');
+      this.logger.log('Resetting old seeded data to seed 20 fresh events with UUIDs...');
       await this.seatRepository.createQueryBuilder().delete().execute();
       await this.eventRepository.createQueryBuilder().delete().execute();
     }

@@ -1,18 +1,15 @@
-import { IsNotEmpty, IsUUID } from "class-validator";
+import { IsNotEmpty, IsString, IsUUID } from "class-validator";
 
 export class CreateBookingDto {
     @IsUUID()
     @IsNotEmpty()
-    bookingId: string
+    bookingId: string;
 
-    @IsNotEmpty()
     @IsUUID()
-    userId: string
-
     @IsNotEmpty()
-    @IsUUID()
-    paymentMethod: string
+    userId: string;
 
-
-
+    @IsString()
+    @IsNotEmpty()
+    paymentMethod: string;
 }
