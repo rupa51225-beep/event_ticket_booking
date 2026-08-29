@@ -1,12 +1,13 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { EventsService } from './event.service';
+import { SeatsService } from '../seat/seat.service';
 
 
 @Controller('events')
 export class EventsController {
   constructor(
     private readonly eventsService: EventsService,
-    // private readonly seatsService: SeatService,
+    private readonly seatsService: SeatsService,
   ) { }
 
   @Get()
@@ -23,6 +24,6 @@ export class EventsController {
   async getEventSeats(@Param('id') eventId: string) {
     // Ensure event exists
     await this.eventsService.findOne(eventId);
-    // return this.seatsService.findByEvent(eventId);
+    return this.seatsService.findByEvent(eventId);
   }
 }

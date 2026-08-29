@@ -4,7 +4,7 @@ import { SeatsService } from './seat.service';
 
 
 
-@Controller('seat')
+@Controller(['seats', 'seat'])
 export class SeatController {
   constructor(private readonly seatService: SeatsService) { }
 
